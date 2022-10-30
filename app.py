@@ -25,12 +25,19 @@ class_dict = {
     9: 'healthy'
 }
 
+labels = ['Bacterial spot', 'Early blight', 'Late blight', 'Leaf Mold', 'Septoria leaf spot', 'Spider mites Two-spotted spider mite', 'Target Spot', 'Tomato Yellow Leaf Curl Virus', 'Tomato mosaic virus', 'healthy']
+
 def predict_label(img_path):
     loaded_img = load_img(img_path, target_size=(256, 256))
     img_array = img_to_array(loaded_img) / 255.0
     img_array = expand_dims(img_array, 0)
     # predicted_bit = np.round(model.predict(img_array)[0][0]).astype('int')
-    return 'ada'
+    x = np.stack([img_array], axis=0)
+    y = model.predict(x)
+    # print(y)
+    # print(np.max(y))
+    predict = labels[np.argmax(y)] + " = "  + str(np.max(y))
+    return predict
 
 @app.route('/', methods=['GET', 'POST'])
 @cross_origin()
