@@ -10,7 +10,7 @@ app = Flask(__name__)
 CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['UPLOAD_FOLDER'] = './static/uploads/'
-model = load_model('./model_6.h5')
+model = load_model('./model_6.h5',compile=False)
 
 class_dict = {
     0: 'Bacterial spot', 
@@ -33,7 +33,7 @@ def predict_label(img_path):
     img_array = expand_dims(img_array, 0)
     # predicted_bit = np.round(model.predict(img_array)[0][0]).astype('int')
     x = np.stack([img_array], axis=0)
-    # y = model.predict(x)
+    y = model.predict(x)
     # print(y)
     # print(np.max(y))
     # predict = labels[np.argmax(y)] + " = "  + str(np.max(y))
