@@ -8,6 +8,7 @@ import os
 
 app = Flask(__name__)
 CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['UPLOAD_FOLDER'] = './static/uploads/'
 model = load_model('model_6.h5')
 
@@ -32,6 +33,7 @@ def predict_label(img_path):
     return predicted_bit
 
 @app.route('/', methods=['GET', 'POST'])
+@cross_origin()
 def index():
     if request.method == 'POST':
         return "ini di post"
@@ -46,6 +48,7 @@ def index():
     return 'kosong'
 
 @app.route('/display/<filename>')
+@cross_origin()
 def send_uploaded_image(filename=''):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
