@@ -36,12 +36,12 @@ def predict_label(img_path):
 @cross_origin()
 def index():
     if request.method == 'POST':
-        if 'image' in request.files:
-            image = request.files['image']
-            img_path = os.path.join(app.config['UPLOAD_FOLDER'], image.filename)
-            image.save(img_path)
-            prediction = predict_label(img_path)
-            return prediction
+        image = request.files['image']
+        img_path = os.path.join(app.config['UPLOAD_FOLDER'], image.filename)
+        image.save(img_path)
+        prediction = predict_label(img_path)
+        return prediction
+        # if  request.files:
 
     return 'kosong'
 
