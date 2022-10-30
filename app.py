@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, send_from_directory, Response
 from flask_cors import CORS
-# from tensorflow.keras.models import load_model
-# from tensorflow.keras.preprocessing.image import img_to_array, load_img
-# from tensorflow import expand_dims
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing.image import img_to_array, load_img
+from tensorflow import expand_dims
 import numpy as np
 import os
 
