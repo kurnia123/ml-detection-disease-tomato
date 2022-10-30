@@ -10,7 +10,7 @@ app = Flask(__name__)
 CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['UPLOAD_FOLDER'] = './static/uploads/'
-model = load_model('model_6.h5')
+model = load_model('./model_6.h5')
 
 class_dict = {
     0: 'Bacterial spot', 
@@ -36,8 +36,9 @@ def predict_label(img_path):
     y = model.predict(x)
     # print(y)
     # print(np.max(y))
-    predict = labels[np.argmax(y)] + " = "  + str(np.max(y))
-    return predict
+    # predict = labels[np.argmax(y)] + " = "  + str(np.max(y))
+    # return predict
+    return 'ada'
 
 @app.route('/', methods=['GET', 'POST'])
 @cross_origin()
