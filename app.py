@@ -35,7 +35,7 @@ def predict_label(img_path):
 def index():
     if request.method == 'POST':
         if request.files:
-            image = request.files['image']
+            image = request.files['file']
             # img_path = os.path.join(app.config['UPLOAD_FOLDER'], image.filename)
             # image.save(img_path)
             # prediction = predict_label(img_path)
