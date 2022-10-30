@@ -40,8 +40,8 @@ def index():
             image = request.files['image']
             img_path = os.path.join(app.config['UPLOAD_FOLDER'], image.filename)
             image.save(img_path)
-            prediction = predict_label(img_path)
-            return prediction
+            # prediction = predict_label(img_path)
+            return img_path
 
     return 'kosong'
 
