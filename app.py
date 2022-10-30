@@ -29,7 +29,7 @@ def predict_label(img_path):
     img_array = img_to_array(loaded_img) / 255.0
     img_array = expand_dims(img_array, 0)
     predicted_bit = np.round(model.predict(img_array)[0][0]).astype('int')
-    return class_dict[predicted_bit]
+    return predicted_bit
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
