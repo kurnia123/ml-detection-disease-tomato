@@ -4,4 +4,3 @@ tensorflow
 gunicorn
 pillow
 numpy
-pandas
