@@ -32,7 +32,7 @@ def predict_label(img_path):
     img_array = img_to_array(loaded_img) / 255.0
     img_array = expand_dims(img_array, 0)
     # predicted_bit = np.round(model.predict(img_array)[0][0]).astype('int')
-    x = np.stack([img_array], axis=0)
+    x = np.stack(img_array, axis=0)
     y = model.predict(x)
     # print(y)
     # print(np.max(y))
